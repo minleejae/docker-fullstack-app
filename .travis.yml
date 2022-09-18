@@ -16,7 +16,7 @@ after_success:
   - docker build -t minleejae/docker-backend ./backend
   - docker build -t minleejae/docker-nginx ./nginx
 
-  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --pasword-stdin
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   - docker push minleejae/docker-frontend
   - docker push minleejae/docker-backend
