@@ -1,0 +1,23 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t minleejae/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+
+script:
+  - docker run -e CI=true minleejae/react-test-app npm run test
+
+after_success:
+  - docker build -t minleejae/docker-frontend ./frontend
+  - docker build -t minleejae/docker-backend ./backend
+  - docker build -t minleejae/docker-nginx ./nginx
+
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --pasword-stdin
+
+  - docker push minleejae/docker-frontend
+  - docker push minleejae/docker-backend
+  - docker push minleejae/docker-nginx
