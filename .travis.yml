@@ -21,3 +21,16 @@ after_success:
   - docker push minleejae/docker-frontend
   - docker push minleejae/docker-backend
   - docker push minleejae/docker-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-fullstack-app"
+  env: "Dockerfullstackapp-env"
+  bucket_name: elasticbeanstalk-us-east-1-046151083842
+  bucket_path: "docker-fullstack-app"
+  on:
+    branch: master
+
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
