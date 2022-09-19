@@ -38,6 +38,10 @@ function App() {
       });
   };
 
+  const clickDeleteButton = (list) => {
+    console.log(list);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -45,7 +49,18 @@ function App() {
         <h1>TEST</h1>
         <div className="container">
           {lists &&
-            lists.map((list, index) => <li key={index}>{list.value}</li>)}
+            lists.map((list, index) => (
+              <li key={index}>
+                {list.value}
+                <button
+                  onClick={(list) => {
+                    clickDeleteButton(list);
+                  }}
+                >
+                  삭제
+                </button>
+              </li>
+            ))}
           <form className="example" onSubmit={submitHandler}>
             <input
               type="text"
