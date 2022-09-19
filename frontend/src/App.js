@@ -27,6 +27,7 @@ function App() {
         value: value,
       })
       .then((response) => {
+        console.log("to test", response);
         if (response.data.success) {
           console.log("response", response);
           setLists([...lists, response.data]);
