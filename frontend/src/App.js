@@ -47,6 +47,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>TEST</h1>
+        <h2>배포추가</h2>
         <div className="container">
           {lists &&
             lists.map((list, index) => (
